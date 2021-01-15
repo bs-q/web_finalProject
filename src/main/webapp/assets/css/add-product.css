@@ -1,0 +1,118 @@
+@charset "ISO-8859-1";
+/* CSS Document */
+*{
+	padding: 0 auto;
+	margin: 0 auto;
+}
+
+.Container{
+    width: 100%;
+    height: auto;
+	font-family: 'Satisfy', cursive;
+}
+
+.Header{
+	width:100%;
+	height: 3em;
+    color: white;
+    background-color: black;
+	text-align: center;
+    line-height: 3em;
+}
+
+.Menu{
+    width: 100%;
+    color: white;
+    background-color: black;
+    line-height: 3em;
+    margin: 1em 0em;
+}
+
+.Menu ul{
+    list-style-type: none;
+    text-align: center;
+    margin-left: -2em;
+}
+
+.Menu ul li{
+    display: inline-table;
+    width: 19%;
+}
+
+.Menu ul li a{
+    text-decoration: none;
+    display: block;
+}
+
+.Menu ul li a:hover{
+    cursor: pointer;
+    color:black;
+    background-color: white;
+}
+
+.Content{
+    width: 100%;
+    height: auto;
+}
+
+.Content form{
+	top: 50%;
+	left: 50%;
+	width:50em;
+	height:40em;
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 2em;
+	padding: 1em;
+}
+
+#MainInfo{
+    float: left;
+    width: 45%;
+}
+
+img{
+    width: 100%;
+    height: 20.2em;
+}
+
+#ImageArea{
+    float: left;
+    width: 50%;
+    margin-left: 2.5em;
+}
+
+input[type="text"],#ComboBox1,#ComboBox2{
+    border: none;
+    border-bottom: solid black 2px;
+    width: 100%;
+}
+
+#ComboBox2{
+    width: 45%;
+    float: left;
+}
+
+input[type="submit"]{
+    width: 15em;
+    height: 2em;
+    float: right;
+    color: white;
+    background-color: black;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+
+input[type="text"],#ComboBox1,#ComboBox2 :focus{
+    outline: none;
+}
+.Footer{
+    margin-top: 1em;
+    width:100%;
+	height: 3em;
+    background-color: black;
+}
