@@ -1,3 +1,5 @@
-insert into customer values(1,'a','b','c');
-insert into customer values(2,'b','b','c');
-insert into customer values(3,'c','b','c');
+insert into shoes values (1,'ok',1.1)
+insert into shoes values (2,'okbabe',1.1)
+insert into shoes values (3,'okman',1.1)
+
+insert into cartitems(1,3,4,1)
