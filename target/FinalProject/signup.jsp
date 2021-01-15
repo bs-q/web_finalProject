@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/login.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="./assets/js/form-validate.js"></script>
   </head>
   <body>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,8 +15,17 @@
       <form method="POST" action="register" name="registration">
         <div class="login-user">
           <i class="fas fa-user-alt"></i>
-          <input type="text" name="firstname" class="input" placeholder="First
-          name" value="<c:out value="${firstname}" />" />
+          <input
+            type="text"
+            name="firstname"
+            class="input"
+            placeholder="First
+          name"
+            value="${firstname}"
+            required
+            pattern="^[a-zA-Z\\s]+"
+            maxlength="50"
+          />
         </div>
         <div class="login-user">
           <i class="fas fa-user-alt"></i>
@@ -26,6 +34,9 @@
             name="lastname"
             class="input"
             placeholder="Last name"
+            required
+            pattern="^[a-zA-Z\\s]+"
+            maxlength="50"
           />
         </div>
         <div class="login-user">
@@ -36,6 +47,8 @@
             name="email"
             class="input"
             placeholder="Email@email.com"
+            pattern="^[\w.+\-]+@gmail\.com$"
+            required
           />
         </div>
         <div class="login-user">
@@ -45,6 +58,10 @@
             name="password"
             class="input"
             placeholder="Password"
+            required
+            pattern="^\S{6,}$"
+            id="password"
+            onchange=" if(this.checkValidity()) form.password_two.pattern = this.value;"
           />
         </div>
         <div class="login-user">
@@ -54,6 +71,9 @@
             name="password-cf"
             class="input"
             placeholder="Confirm Password"
+            required
+            min="6"
+            id="password_two"
           />
         </div>
         <div class="forgot">
@@ -66,5 +86,6 @@
         <button class="btn" type="submit">Register</button>
       </form>
     </div>
+    <script src="./assets/js/form-validate.js"></script>
   </body>
 </html>
