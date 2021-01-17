@@ -13,9 +13,9 @@ Last Modified: Thursday, 14th January 2021 10:54:02 pm
   </head>
   <body>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <jsp:useBean id="user" scope="request" class="models.Color">
-        <jsp:setProperty name="user" property="color" value="ok"/>
-    </jsp:useBean>
+    <c:forTokens var="part" items="${email}" delims="@gmail.com">
+    <li>${part}</li>
+    </c:forTokens>
 
   </body>
 </html>

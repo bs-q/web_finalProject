@@ -19,8 +19,7 @@
             type="text"
             name="firstname"
             class="input"
-            placeholder="First
-          name"
+            placeholder="First name"
             value="${firstname}"
             required
             pattern="^[a-zA-Z\\s]+"
@@ -31,6 +30,7 @@
           <i class="fas fa-user-alt"></i>
           <input
             type="text"
+            value="${lastname}"
             name="lastname"
             class="input"
             placeholder="Last name"
@@ -45,6 +45,7 @@
             id="email"
             type="email"
             name="email"
+            value="${email}"
             class="input"
             placeholder="Email@email.com"
             pattern="^[\w.+\-]+@gmail\.com$"
@@ -56,6 +57,7 @@
           <input
             type="password"
             name="password"
+            value="${password}"
             class="input"
             placeholder="Password"
             required
@@ -69,6 +71,7 @@
           <input
             type="password"
             name="password-cf"
+            value="${conPassword}"
             class="input"
             placeholder="Confirm Password"
             required
@@ -81,8 +84,13 @@
             <input type="checkbox" name="remember" id="remember" />
             <label for="remember">Show Password</label>
           </div>
-          <a href="./login.html">Return to Sign-in page?</a>
+          <a href="./login">Return to Sign-in page?</a>
         </div>
+        <c:if test="${registered==true}">
+          <p style="color: red">
+            This email has been registered, try another one
+          </p>
+        </c:if>
         <button class="btn" type="submit">Register</button>
       </form>
     </div>

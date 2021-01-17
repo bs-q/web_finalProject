@@ -77,7 +77,7 @@ public class CustomerDAO {
     /**
      * Check customer input 
      * @param email
-     * @return false if the input email has been registered, else return true
+     * @return true if the email is registered, else false
      */
     public static boolean emailExist(String email) {
         Customer customer = selectCustomer(email);

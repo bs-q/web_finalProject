@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.customerDAO.CustomerDAO;
+import data.util.Encrypt;
 import models.Customer;
 
 @WebServlet(urlPatterns = "/register")
@@ -42,12 +43,26 @@ public class RegisterServlet extends HttpServlet {
             req.setAttribute("password", password);
             req.setAttribute("conPassword", conPassword);
             getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
-        } else {
-            Customer customer = new Customer(firstName, lastName, email, password, "", "", "");
+        }
+        else if (CustomerDAO.emailExist(email)){
+            req.setAttribute("firstname", firstName);
+            req.setAttribute("lastname", lastName);
+            req.setAttribute("email", email);
+            req.setAttribute("password", password);
+            req.setAttribute("conPassword", conPassword);
+            req.setAttribute("registered", true);
+            getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
+        }
+        else {
+            Customer customer = new Customer(firstName, lastName, email, Encrypt.sha1(password), "", "customer", "");
             CustomerDAO.insertCustomer(customer);
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
         }
 
+    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
     }
 
     /**

@@ -18,6 +18,7 @@
           <input
             type="email"
             name="email"
+            value="${requestScope.email}"
             id="email"
             class="input"
             placeholder="Email"
@@ -31,6 +32,7 @@
             type="password"
             name="password"
             id="password"
+            value="${requestScope.password}"
             class="input"
             required
             placeholder="Password"
@@ -45,13 +47,13 @@
           <a href="#">Forgot Password?</a>
         </div>
         <button class="btn" type="submit">Sign in</button>
-        <c:if test="${valid==false}">
-          <p style="color: red">Incorrect email or password</p>
+        <c:if test="${requestScope.valid==false}">
+          <p style="color: red">the email or password is incorrect</p>
         </c:if>
       </form>
       <div class="register">
         <span>Don't have an account?</span>
-        <a href="./signup.html"><b>&nbspRegister</b></a>
+        <a href="./register"><b>&nbspRegister</b></a>
       </div>
     </div>
     <script src="./assets/js/login-validate.js"></script>

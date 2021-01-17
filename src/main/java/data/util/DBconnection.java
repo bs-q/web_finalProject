@@ -19,15 +19,8 @@ public class DBconnection {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Pattern firstNamePattern = Pattern.compile("^[\\w.+\\-]+@gmail\\.com$");
-        Matcher firstNameMatch = firstNamePattern.matcher("a@gmail.com");
-        if (firstNameMatch.matches())
-        {
-            System.out.println("ok");
-        }
-        else {
-            System.out.println(":(");
-        }
+        Customer c=CustomerDAO.selectCustomer("q@gmail.com");
+
         // MailServlet.send("18110041@student.hcmute.edu.vn", "accounts.google.com",
         // "18110007@student.hcmute.edu.vn", "hello cunt", "How r u?");
         // DButil.shutdown();

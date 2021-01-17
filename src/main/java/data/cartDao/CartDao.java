@@ -16,6 +16,7 @@ import models.CartItems;
 
 public class CartDao {
     
+    
     public static Cart selectCart(Integer id) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         return em.find(Cart.class,id);
@@ -26,10 +27,23 @@ public class CartDao {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         i.setCart(c);
-        c.getCartItems().add(i);
         trans.begin();
         try {
-            em.merge(c);
+            em.merge(i);
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static void insertCart(Cart cart) {
+        EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.persist(cart);
             trans.commit();
         } catch (Exception e) {
             System.out.println(e);

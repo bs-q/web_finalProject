@@ -16,8 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Cart implements Serializable  {
-    
+public class Cart implements Serializable {
+
     /**
      *
      */
@@ -37,14 +37,14 @@ public class Cart implements Serializable  {
     @Column(name = "cart_total")
     private float total;
 
-    @OneToMany(mappedBy = "cart",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CartItems> cartItems;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_customer_id")
     private Customer customer;
 
-    @OneToOne(mappedBy = "cart",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "cart", fetch = FetchType.LAZY)
     private Shipment shipment;
 
     public Cart(boolean status, List<CartItems> cartItems) {
@@ -96,9 +96,9 @@ public class Cart implements Serializable  {
     }
 
     public float getTotal() {
-        float temp=0;
-        for ( CartItems c : cartItems){
-            temp=temp+c.getShoes().getShoesPrice();
+        float temp = 0;
+        for (CartItems c : cartItems) {
+            temp = temp + c.getShoes().getShoesPrice();
         }
         return total;
     }
