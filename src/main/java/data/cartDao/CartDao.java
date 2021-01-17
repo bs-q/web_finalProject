@@ -17,7 +17,7 @@ import models.CartItems;
 public class CartDao {
     
     
-    public static Cart selectCart(Integer id) {
+    public static Cart selectCartById(Integer id) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         return em.find(Cart.class,id);
     }
@@ -51,5 +51,18 @@ public class CartDao {
             em.close();
         }
     }
-
+    public static void updateCart(Cart cart) {
+        EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.merge(cart);
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
 }

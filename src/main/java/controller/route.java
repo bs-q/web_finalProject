@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/pt","/pt1"} )
+@WebServlet(urlPatterns = { "/pt1", "/errorHandler" })
 public class route extends HttpServlet {
-    
+
     /**
      *
      */
@@ -18,11 +18,13 @@ public class route extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/forbidden.html").forward(req, resp);
+    }
 
-        String url="/disp.jsp";
-        String greet="fuck you";
-        req.setAttribute("greet", greet);
-        getServletContext().getRequestDispatcher(url).forward(req, resp);;
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/forbidden.html").forward(req, resp);
+
     }
 
 }

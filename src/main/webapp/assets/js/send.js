@@ -6,4 +6,8 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var request = new XMLHttpRequest();
 request.open("GET", "http://localhost:8080/FinalProject/js?shoesId=1", true);
-request.send();
+request.send()
+
+setTimeout(() => {
+    console.log(request.status)
+}, 2000);
