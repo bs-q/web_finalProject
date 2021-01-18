@@ -16,19 +16,20 @@ import javax.servlet.http.HttpSession;
 
 import data.util.CookieUtil;
 
-@WebServlet(urlPatterns = {"/logout"})
+@WebServlet(urlPatterns = { "/logout" })
 public class LogOutServlet extends HttpServlet {
 
     /**
      *
      */
     private static final long serialVersionUID = 5444368759601420248L;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session=req.getSession();
+        HttpSession session = req.getSession();
         session.removeAttribute("email");
         CookieUtil.removeAllCookie(req.getCookies(), resp);
-        getServletContext().getRequestDispatcher("/home").forward(req, resp);
+        session.removeAttribute("email");
+        resp.sendRedirect("home");
     }
 }

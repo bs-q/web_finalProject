@@ -61,13 +61,6 @@ public class Cart implements Serializable {
         this.cartId = cartId;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public List<CartItems> getCartItems() {
         return cartItems;
@@ -119,6 +112,14 @@ public class Cart implements Serializable {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }

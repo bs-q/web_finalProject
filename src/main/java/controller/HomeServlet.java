@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,21 +30,19 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if (session.getAttribute("allShoes") != null) {
-            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-        }
-        String cookieEmail=CookieUtil.getCookieValue(req.getCookies(), "email");
-        if (cookieEmail!=null){
-            session.setAttribute("email", cookieEmail);
-            List<Shoes> allShoes = ShoesDAO.retrieveAllShoes();
-            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        ServletContext context = req.getSession().getServletContext();
 
-        } 
-        else {
-            List<Shoes> allShoes = ShoesDAO.retrieveAllShoes();
-            session.setAttribute("allShoes", allShoes);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        if (context.getAttribute("allShoes") == null) {
+            context.setAttribute("allShoes", ShoesDAO.retrieveNShoes(12));
         }
+        String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
+        if (cookieEmail != "") {
+            session.setAttribute("email", cookieEmail);
+            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            return;
+        }
+        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+
     }
 
 }

@@ -10,6 +10,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -21,4 +22,24 @@ import models.CartItems;
 
 public class CartItemsDAO {
     
+    /**
+     * insert cart item
+     * @param item
+     * @return return true if transaction if complete, else false
+     */
+    public static boolean insertCartItem(CartItems item) {
+        EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.persist(item);
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            em.close();
+        }
+        return true;
+    }
 }

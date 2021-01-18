@@ -17,11 +17,10 @@ import models.Cart;
 import models.CartItems;
 
 public class CartDao {
-    
-    
+
     public static Cart selectCartById(Integer id) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
-        return em.find(Cart.class,id);
+        return em.find(Cart.class, id);
     }
 
     public static List<CartItems> retrieveAllItemsInCart(Integer id) {
@@ -29,7 +28,7 @@ public class CartDao {
     }
 
     public static void addCartItems(Cart c, CartItems i) {
-        
+
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         i.setCart(c);
@@ -43,8 +42,8 @@ public class CartDao {
             em.close();
         }
     }
-    
-    public static void insertCart(Cart cart) {
+
+    public static boolean insertCart(Cart cart) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -53,11 +52,13 @@ public class CartDao {
             trans.commit();
         } catch (Exception e) {
             System.out.println(e);
-        } finally {
-            em.close();
+            return false;
         }
+        em.close();
+        return true;
     }
-    public static void updateCart(Cart cart) {
+
+    public static boolean updateCart(Cart cart) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -67,8 +68,10 @@ public class CartDao {
         } catch (Exception e) {
             System.out.println(e);
             trans.rollback();
-        } finally {
-            em.close();
+            return false;
         }
+        em.close();
+        return true;
+
     }
 }

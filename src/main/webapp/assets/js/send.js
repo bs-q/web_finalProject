@@ -5,7 +5,7 @@
  */
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var request = new XMLHttpRequest();
-request.open("GET", "http://localhost:8080/FinalProject/add", true);
+request.open("GET", "http://localhost:8080/FinalProject/add?shoesId=101", true);
 request.send();
 
 request.onreadystatechange = function () {
@@ -15,5 +15,4 @@ request.onreadystatechange = function () {
     console.log(this.status);
     window.alert("fuck you");
   }
-  
 };

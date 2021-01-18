@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Color implements Serializable{
+public class Color implements Serializable {
 
     /**
      *
@@ -20,6 +20,7 @@ public class Color implements Serializable{
     private Shoes shoes;
 
     private String color;
+    private String image;
 
     public Color() {
     }
@@ -38,5 +39,13 @@ public class Color implements Serializable{
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

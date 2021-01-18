@@ -16,17 +16,22 @@ import models.Shoes;
 
 public class ShoesDAO {
     
-    public static List<Shoes> retrieveAllShoes(){
+    public static List<Shoes> retrieveNShoes(int n){
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         CriteriaQuery<Shoes> cq = em.getCriteriaBuilder().createQuery(Shoes.class);
         Root<Shoes> customer = cq.from(Shoes.class);
         try {
             cq.select(customer);
-            return DButil.getEntityManagerFactory().createEntityManager().createQuery(cq).getResultList();
+            return DButil.getEntityManagerFactory().createEntityManager().createQuery(cq).setMaxResults(n).getResultList();
         } catch (NoResultException e) {
             return null;
         } finally {
             em.close();
         }
+    }
+    
+    public static Shoes selectShoesById(Integer  id) {
+        EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
+        return em.find(Shoes.class, id);
     }
 }

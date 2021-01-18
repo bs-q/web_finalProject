@@ -67,9 +67,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+
         // if email and password in session is empty that mean user have closed browser
         // or haven't login, forward to login.jsp else forward to home, maybe use cookie to do this job
-        if (session.getAttribute("email") == null) {
+        if (session.getAttribute("email")==null) {
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
             getServletContext().getRequestDispatcher("/home").forward(req, resp);

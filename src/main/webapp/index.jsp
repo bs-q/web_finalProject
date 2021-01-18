@@ -13,12 +13,12 @@ Author: Bui Si Quan (18110041@student.hcmute.edu.vn)
   <body>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <h1>fuck you all</h1>
     <c:out value="${email}" />
-    <c:forEach var="c" items="${allShoes}">
+    <p>------</p>
+    <c:forEach var="c" items="${applicationScope.allShoes}">
       <p>${c.shoesName}</p>
       <p>${c.shoesPrice}</p>
-      <p>-----------</p>
+      <img src="${shoes.color.image}" alt="">
     </c:forEach>
 
     <c:forEach var="c" items="${cookie}">

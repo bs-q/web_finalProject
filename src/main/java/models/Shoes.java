@@ -39,8 +39,6 @@ public class Shoes implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
 
-    @OneToOne(mappedBy = "shoes",fetch = FetchType.LAZY)
-    private Image image;
 
     @OneToMany(mappedBy = "shoes",fetch = FetchType.LAZY)
     private List<Size> size;
@@ -108,14 +106,6 @@ public class Shoes implements Serializable {
 
     public void setBrand(Brand brand) {
         this.brand = brand;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
     }
 
     public List<Size> getSize() {
