@@ -7,6 +7,8 @@
 
 package data.cartDao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -20,6 +22,10 @@ public class CartDao {
     public static Cart selectCartById(Integer id) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         return em.find(Cart.class,id);
+    }
+
+    public static List<CartItems> retrieveAllItemsInCart(Integer id) {
+        return selectCartById(id).getCartItems();
     }
 
     public static void addCartItems(Cart c, CartItems i) {

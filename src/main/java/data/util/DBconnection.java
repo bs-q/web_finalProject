@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import data.cartDao.CartDao;
+import data.cartItemDao.CartItemsDAO;
 import data.customerDAO.CustomerDAO;
 import models.Cart;
 import models.CartItems;
@@ -18,13 +19,10 @@ import models.Shoes;
 public class DBconnection {
 
     public static void main(String[] args) throws InterruptedException {
-
-        Customer c = CustomerDAO.selectCustomer("quan@gmail.com");
-        c.getCart().get(0).getCartItems().get(0).setCartItemsQuantity(10);
-        CustomerDAO.updateCustomer(c);
-
+        System.out.println(CustomerDAO.selectCustomer("quan@gmail.com"));
+        DButil.shutdown();
         // MailServlet.send("18110041@student.hcmute.edu.vn", "accounts.google.com",
-        // "18110007@student.hcmute.edu.vn", "hello cunt", "How r u?");
+        // "18110007@student.hcmute.edu.vn", "hello", "How r u?");
         // DButil.shutdown();
 
     }

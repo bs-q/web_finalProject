@@ -22,21 +22,13 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer customerId;
-    @Column(name = "first_name")
     private String customerFirstName;
-    @Column(name = "last_name")
     private String customerLastName;
-    @Column(name = "email")
     private String customerEmail;
-    @Column(name = "password")
     private String customerPassword;
-    @Column(name = "phone")
     private String customerPhone;
-    @Column(name = "role")
     private String customerRole;
-    @Column(name = "address")
     private String customerAddress;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)

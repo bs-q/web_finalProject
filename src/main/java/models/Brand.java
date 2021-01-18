@@ -20,14 +20,11 @@ public class Brand implements Serializable{
     private static final long serialVersionUID = 6084206074721408964L;
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer brandId;
 
-    @Column(name = "brand_name")
     private String brandName;
 
-    @Column(name = "country")
     private String country;
 
     @OneToMany(mappedBy = "brand",fetch =FetchType.LAZY)

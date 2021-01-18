@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,23 +26,20 @@ public class Cart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer cartId;
 
-    @Column(name = "cart_status")
     private boolean status;
 
-    @Column(name = "cart_note")
     private String note;
 
-    @Column(name = "cart_total")
     private float total;
+
+    private Date time;
 
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CartItems> cartItems;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_customer_id")
     private Customer customer;
 
     @OneToOne(mappedBy = "cart", fetch = FetchType.LAZY)
@@ -113,6 +111,14 @@ public class Cart implements Serializable {
 
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
 }

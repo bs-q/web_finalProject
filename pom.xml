@@ -2,9 +2,7 @@
 <!-- =========================================================== -->
 <!-- WebApp for Servlet 3.1                                      -->
 <!-- =========================================================== -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>tomcatmaven</groupId>
   <artifactId>FinalProject</artifactId>
@@ -51,7 +49,6 @@
       <version>5.4.10.Final</version>
     </dependency>
 
-    
 
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
@@ -85,36 +82,37 @@
       <version>2.3.1</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>javax.servlet.jsp.jstl</artifactId>
       <version>1.2.4</version>
       <exclusions>
         <exclusion>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
         </exclusion>
         <exclusion>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
+          <groupId>javax.servlet.jsp</groupId>
+          <artifactId>jsp-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
   </dependencies>
-  
+
   <build>
     <finalName>FinalProject</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.8.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
-    </plugins>   
+    </plugins>
   </build>
-  
+
 </project>

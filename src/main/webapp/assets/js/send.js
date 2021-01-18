@@ -5,9 +5,15 @@
  */
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var request = new XMLHttpRequest();
-request.open("GET", "http://localhost:8080/FinalProject/js?shoesId=1", true);
-request.send()
+request.open("GET", "http://localhost:8080/FinalProject/add", true);
+request.send();
 
-setTimeout(() => {
-    console.log(request.status)
-}, 2000);
+request.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    request.status==200
+    
+    console.log(this.status);
+    window.alert("fuck you");
+  }
+  
+};

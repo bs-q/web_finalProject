@@ -20,18 +20,14 @@ public class Shipment implements Serializable {
     private static final long serialVersionUID = 3029112325690058953L;
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer shipmentId;
 
-    @Column(name= "delivery_date")
     private Date deliveryDate;
 
-    @Column(name = "status")
     private Boolean status;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_card_id")
     private Cart cart;
 
     public Shipment() {

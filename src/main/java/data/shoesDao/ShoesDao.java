@@ -14,7 +14,8 @@ import javax.persistence.criteria.Root;
 import data.util.DButil;
 import models.Shoes;
 
-public class ShoesDao {
+public class ShoesDAO {
+    
     public static List<Shoes> retrieveAllShoes(){
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         CriteriaQuery<Shoes> cq = em.getCriteriaBuilder().createQuery(Shoes.class);

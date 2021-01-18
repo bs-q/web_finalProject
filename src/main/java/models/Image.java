@@ -21,19 +21,15 @@ public class Image implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "image_id")
     private Integer imageId;
 
     // image can be fetch from other server or current connected database
 
-    @Column(name = "image_out")
     private String imageOut;
 
-    @Column(name = "image_in")
     private byte[] imageIn;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_shoes_id")
     private Shoes shoes;
 
     public Image() {

@@ -23,4 +23,11 @@ public class CookieUtil {
         }
         return cookieValue;
     }
+    public static void removeAllCookie(Cookie[]cookies,HttpServletResponse response) {   
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+    }
 }

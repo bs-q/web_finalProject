@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,12 +23,8 @@ public class Shoes implements Serializable {
     private static final long serialVersionUID = 7793415300483082194L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "id")
-    private String shoesId;
-    @Column(name = "shoes_name")
+    private Integer shoesId;
     private String shoesName;
-    @Column(name = "shoes_price")
     private Float shoesPrice;
 
     @OneToOne(mappedBy = "shoes",fetch = FetchType.LAZY)
@@ -39,20 +37,22 @@ public class Shoes implements Serializable {
     private Color color;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_brand_id")
     private Brand brand;
 
     @OneToOne(mappedBy = "shoes",fetch = FetchType.LAZY)
     private Image image;
 
+    @OneToMany(mappedBy = "shoes",fetch = FetchType.LAZY)
+    private List<Size> size;
+
     public Shoes() {
     }
 
-    public String getShoesId() {
+    public Integer getShoesId() {
         return shoesId;
     }
 
-    public void setShoesId(String shoesId) {
+    public void setShoesId(Integer shoesId) {
         this.shoesId = shoesId;
     }
 
@@ -108,6 +108,22 @@ public class Shoes implements Serializable {
 
     public void setBrand(Brand brand) {
         this.brand = brand;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<Size> getSize() {
+        return size;
+    }
+
+    public void setSize(List<Size> size) {
+        this.size = size;
     }
 
 }

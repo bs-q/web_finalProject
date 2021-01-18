@@ -22,21 +22,16 @@ public class CartItems implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer cartItemsId;
 
-    @Column(name = "item_size")
     private Integer cartItemsSize;
 
-    @Column(name = "item_quantity")
     private Integer cartItemsQuantity;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_shoes_id")
     private Shoes shoes;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_card_id")
     private Cart cart;
 
     public CartItems(Integer cartItemsSize, Integer cartItemsQuantity, Shoes shoes) {

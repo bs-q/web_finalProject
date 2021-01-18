@@ -22,15 +22,12 @@ public class WishList implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer wishListId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_customer_id")
     private Customer customer;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_shoes_id")
     private Shoes shoes;
 
     public WishList() {

@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import data.shoesDao.ShoesDao;
+import data.shoesDao.ShoesDAO;
+import data.util.CookieUtil;
 import models.Shoes;
 
 @WebServlet(urlPatterns = { "/home" })
@@ -30,10 +31,19 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = req.getSession();
         if (session.getAttribute("allShoes") != null) {
             getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-        } else {
-            List<Shoes> allShoes = ShoesDao.retrieveAllShoes();
+        }
+        String cookieEmail=CookieUtil.getCookieValue(req.getCookies(), "email");
+        if (cookieEmail!=null){
+            session.setAttribute("email", cookieEmail);
+            List<Shoes> allShoes = ShoesDAO.retrieveAllShoes();
+            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+
+        } 
+        else {
+            List<Shoes> allShoes = ShoesDAO.retrieveAllShoes();
             session.setAttribute("allShoes", allShoes);
             getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
+
 }
