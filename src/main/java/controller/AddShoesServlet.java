@@ -48,8 +48,8 @@ public class AddShoesServlet extends HttpServlet {
             String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
             if (cookieEmail.equals("")) {
                 // error code 409
-                resp.sendError(HttpServletResponse.SC_GONE, "login required");
                 System.out.println("add shoes servlet : line 54 - login required");
+                resp.sendError(HttpServletResponse.SC_GONE, "login required");
                 return;
             } else {
                 session.setAttribute("email", cookieEmail);
@@ -57,23 +57,23 @@ public class AddShoesServlet extends HttpServlet {
         }
         // check param
         if (req.getParameter("shoesId") == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "shoes id is required");
             System.out.println("add shoes servlet : line 63 - shoes id is required");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "shoes id is required");
 
             return;
 
         }
         // check format
         if (!checkFormat(req.getParameter("shoesId"))) {
-            resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE, "wrong shoes id format");
             System.out.println("add shoes servlet : line 71 - wrong shoes id format");
+            resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE, "wrong shoes id format");
             return;
 
         }
         Shoes shoes = checkShoes(Integer.parseInt(req.getParameter("shoesId")));
         if (shoes == null) {
-            resp.sendError(HttpServletResponse.SC_CONFLICT, "wrong shoes id");
             System.out.println("add shoes servlet : line 78 - wrong shoes id");
+            resp.sendError(HttpServletResponse.SC_CONFLICT, "wrong shoes id");
             return;
 
         }
@@ -96,8 +96,8 @@ public class AddShoesServlet extends HttpServlet {
                 return;
 
             } else {
-                resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
                 System.out.println("add shoes servlet : line 102 - transaction failed, can not insert item 1");
+                resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
                 return;
 
             }
@@ -128,8 +128,8 @@ public class AddShoesServlet extends HttpServlet {
                     em.close();
                 }
                 if (cartItems != null) {
-                    resp.sendError(HttpServletResponse.SC_OK, "ok");
                     System.out.println("add shoes servlet : line 134 - ok 3");
+                    resp.sendError(HttpServletResponse.SC_OK, "ok");
                     return;
                 }
                 cartItems = new CartItems();
@@ -137,13 +137,13 @@ public class AddShoesServlet extends HttpServlet {
                 cartItems.setShoes(shoes);
                 cartItems.setCartItemsQuantity(1);
                 if (CartItemsDAO.insertCartItem(cartItems)) {
-                    resp.sendError(HttpServletResponse.SC_OK, "ok");
                     System.out.println("add shoes servlet : line 143 - ok 4");
+                    resp.sendError(HttpServletResponse.SC_OK, "ok");
                     return;
 
                 } else {
-                    resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
                     System.out.println("add shoes servlet : line 148 - transaction failed, can not insert item 2");
+                    resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
                     return;
                 }
             }
@@ -153,8 +153,8 @@ public class AddShoesServlet extends HttpServlet {
         cart.setCustomer(customer);
         CartItems item = new CartItems();
         if (!CartDao.insertCart(cart)) {
-            resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
             System.out.println("add shoes servlet : line 159 - transaction failed, can not insert item 3");
+            resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
 
             return;
         }
@@ -162,14 +162,14 @@ public class AddShoesServlet extends HttpServlet {
         item.setCart(cart);
         item.setShoes(shoes);
         if (CartItemsDAO.insertCartItem(item)) {
-            resp.sendError(HttpServletResponse.SC_OK, "ok");
             System.out.println("add shoes servlet : line 168 - ok 5");
+            resp.sendError(HttpServletResponse.SC_OK, "ok");
 
             return;
 
         } else {
-            resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
             System.out.println("add shoes servlet : line 173 - transaction failed, can not insert item 4");
+            resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed, can not insert item");
 
             return;
         }

@@ -35,7 +35,6 @@ public class CartDao {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         i.setCart(c);
-        trans.begin();
         try {
             trans.begin();
             em.merge(i);
@@ -51,7 +50,6 @@ public class CartDao {
     public static boolean insertCart(Cart cart) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.persist(cart);
@@ -88,7 +86,7 @@ public class CartDao {
         TypedQuery<Cart> q = em.createQuery(qString, Cart.class);
         q.setParameter("email", email);
         q.setParameter("status", status);
-        Cart cart=null;
+        Cart cart = null;
         try {
             trans.begin();
             cart = q.getSingleResult();
@@ -104,13 +102,15 @@ public class CartDao {
 
     public static List<CartItems> retrieveAllItemInCart(String email, boolean status) {
         Cart cart = selectCartByEmailAndStatus(email, status);
-        if(cart==null){
+        if (cart == null) {
             return null;
         }
         return cart.getCartItems();
     }
+
     /**
      * Remove item from cart using cart id and item id
+     * 
      * @param email
      * @param status
      * @param id

@@ -45,7 +45,7 @@ public class OrderServlet extends HttpServlet {
                 String errorMessage = "can not send email";
                 System.out.println(errorMessage);
             }
-            getServletContext().getRequestDispatcher("/thank.html").forward(req, resp);
+            getServletContext().getRequestDispatcher("/thanks.html").forward(req, resp);
             System.out.println("order servlet : line 40 - order success");
         } else {
             getServletContext().getRequestDispatcher("/errorPage.html").forward(req, resp);

@@ -23,7 +23,6 @@ public class CustomerDAO {
     public static void insertCustomer(Customer customer) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.persist(customer);
@@ -43,7 +42,6 @@ public class CustomerDAO {
     public static void updateCustomer(Customer customer) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.merge(customer);
@@ -60,7 +58,8 @@ public class CustomerDAO {
      * Select customer from database using criteria API
      * 
      * @param email
-     * @return return null if customer entity is not stored in database, or an customer entity
+     * @return return null if customer entity is not stored in database, or an
+     *         customer entity
      */
     public static Customer selectCustomer(String email) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
@@ -77,7 +76,8 @@ public class CustomerDAO {
     }
 
     /**
-     * Check customer input 
+     * Check customer input
+     * 
      * @param email
      * @return true if the email is registered, else false
      */
@@ -88,6 +88,7 @@ public class CustomerDAO {
 
     /**
      * Check validity of customer
+     * 
      * @param email
      * @param password
      * @return true if customer is valid, or false

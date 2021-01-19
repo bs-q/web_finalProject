@@ -3,7 +3,7 @@
 <head>
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="./assets/css/shopping-cart.css">
-        <!-- <link rel="stylesheet" href="./assets/css/footer.css" /> -->
+        <link rel="stylesheet" href="./assets/css/footer.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
