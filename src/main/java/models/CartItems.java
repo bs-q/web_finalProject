@@ -28,7 +28,7 @@ public class CartItems implements Serializable {
 
     private Integer cartItemsQuantity;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Shoes shoes;
 
     @ManyToOne(fetch = FetchType.LAZY)

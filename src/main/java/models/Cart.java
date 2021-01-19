@@ -36,7 +36,7 @@ public class Cart implements Serializable {
 
     private Date time;
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CartItems> cartItems;
 
     @ManyToOne(fetch = FetchType.LAZY)

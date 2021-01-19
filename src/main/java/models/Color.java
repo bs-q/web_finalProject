@@ -15,7 +15,7 @@ public class Color implements Serializable {
      */
     private static final long serialVersionUID = 3856935856850484939L;
     @Id
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     // @MapsId("id")
     private Shoes shoes;
 

@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 body{
-	 background: url('/src/img/background-login2.jpg');
+	 background: url('../img/background-login2.jpg');
 	 background-size: 100%;
 	 font-family:calibri ;
 	 background-repeat:no-repeat;

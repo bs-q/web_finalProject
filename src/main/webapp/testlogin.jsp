@@ -67,27 +67,26 @@ Author: Bui Si Quan (18110041@student.hcmute.edu.vn)
       </div>
       <div class="nav-bar-right">
         <ul>
-          <c:if test="${email==null}">
-            <li id="log-in">
-              <a href="login">
-                <i class="fas fa-user"></i>
-                Log in
-              </a>
-            </li>
-            <li><a href="register">Sign up</a></li>
-          </c:if>
-          <c:if test="${email!=null}">
-            <li id="log-in" class="dropdown">
-              <i class="fas fa-user"> </i
-              ><c:set var="name" value="${fn:split(email, '@')}" />
-              Hello, ${name[0]}
-              <div class="dropdown-content">
-                <a href="#">My cart</a>
-                <a href="#">My account</a>
-                <a href="#">Log out</a>
+          <li id="log-in">
+            <a href="#" class="show-dropdown">
+              <i class="fas fa-user"></i>
+              Log in
+            </a>
+            <div class="dropdown-list">
+              <div class="drop-box" onclick="on()">
+                <a href="#"> <i class="far fa-heart"></i> Wish list </a>
               </div>
-            </li>
-          </c:if>
+              <div class="drop-box">
+                <a href="/Web-nhom1/shopping-cart.html">
+                  <i class="fas fa-shopping-cart"></i> Shop Cart
+                </a>
+              </div>
+              <div class="drop-box">
+                <a href="#"> <i class="fas fa-sign-out-alt"></i> Log out </a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">Sign up</a></li>
         </ul>
       </div>
     </div>

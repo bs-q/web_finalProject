@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Alfa Slab One', cursive;
 }
 .nav-bar{
     display: flex;
@@ -11,7 +11,7 @@ body{
     box-shadow: black;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: fixed;
-    z-index: 10000;
+    z-index: 10;
     background-color: white;
 }
 .nav-bar .nav-bar-left{
@@ -43,11 +43,9 @@ body{
 .nav-bar .nav-bar-right ul{
     margin: 0;
 }
-.nav-bar .nav-bar-right ul li{
-    padding: 29px;
-}
-.nav-bar .nav-bar-right ul li:hover{
+.nav-bar .nav-bar-right ul li:hover .dropdown-list{ 
     background-color: #f3f3f3;
+    display: block;
 }
 .nav-bar .nav-bar-right li{
     border-left: 1px solid #f3f3f3;
@@ -57,17 +55,27 @@ body{
     border-left: 1px solid #f3f3f3;
     border-right: none ;
 }
-.title{
-    background: #f3f3f3;
-    height: 70px;
-    margin-bottom: 60px;
-    padding-top: 80px;
+.nav-bar .nav-bar-right ul li{
+    padding: 29px;
+    background-color: white;
 }
-.title .title-name{
-    margin-left: 10% ;
-    margin-top: 17px;
-    font-size: 25px;
-    font-weight: 600;
+.nav-bar .nav-bar-right ul li:hover{
+    background-color: #f3f3f3;
+}
+.nav-bar .nav-bar-right li{
+    border-left: 1px solid #f3f3f3;
+    border-right: 1px solid #f3f3f3;
+    text-align: center;
+}
+.nav-bar-right .dropdown-list{
+    padding-top: 30px;
+    display: none;
+}
+.nav-bar-right .dropdown-list .drop-box{
+    padding-top: 12px;
+}
+.nav-bar-right .dropdown-list .drop-box:hover a{
+    color: #8cc32e;
 }
 /*          PRODUCT        */
 .product-list .properties table{

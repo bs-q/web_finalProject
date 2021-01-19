@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Alfa Slab One', cursive!important ; 
 }
 .nav-bar{
     display: flex;
@@ -11,7 +11,7 @@ body{
     box-shadow: black;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: fixed;
-    z-index: 10000;
+    z-index: 10;
     background-color: white;
 }
 .nav-bar .nav-bar-left{
@@ -37,7 +37,6 @@ body{
     display: block;
     color: black;
     transition: 0.3s;
-    font-size: 15px;
 }
 .nav-bar .nav-bar-left ul a:hover{
     color:  #8cc32e ;
@@ -45,8 +44,21 @@ body{
 .nav-bar .nav-bar-right ul{
     margin: 0;
 }
+.nav-bar .nav-bar-right ul li:hover .dropdown-list{ 
+    background-color: #f3f3f3;
+    display: block;
+}
+.nav-bar .nav-bar-right li{
+    border-left: 1px solid #f3f3f3;
+    border-right: 1px solid #f3f3f3;
+}
+#log-in{
+    border-left: 1px solid #f3f3f3;
+    border-right: none ;
+}
 .nav-bar .nav-bar-right ul li{
     padding: 29px;
+    background-color: white;
 }
 .nav-bar .nav-bar-right ul li:hover{
     background-color: #f3f3f3;
@@ -54,38 +66,17 @@ body{
 .nav-bar .nav-bar-right li{
     border-left: 1px solid #f3f3f3;
     border-right: 1px solid #f3f3f3;
-    font-size: 15px;
+    text-align: center;
 }
-#log-in{
-    border-left: 1px solid #f3f3f3;
-    border-right: none ;
+.nav-bar-right .dropdown-list{
+    padding-top: 30px;
+    display: none;
 }
-/* FOOTER */
-.footer{
-    background-color:#414141;
-    height: 250px;
-    
+.nav-bar-right .dropdown-list .drop-box{
+    padding-top: 12px;
 }
-.footer .footer-content{
-    width: 90%;
-    margin: 0 auto;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.footer .footer-column{
-    margin: 40px 0;
-    
-}
-.footer .footer-column .footer-head{
-    font-size: 17px;
-    font-weight: 600;
-    margin: 12px 0;
-}
-.footer .footer-column .footer-sub{
-    font-size: 14px;
-    margin: 10px 0;
-    color: #bdbdbd;
+.nav-bar-right .dropdown-list .drop-box:hover a{
+    color: #8cc32e;
 }
 /* CAROUSEL*/
 .container{

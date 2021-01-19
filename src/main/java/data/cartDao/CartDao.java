@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 import data.util.DButil;
 import models.Cart;
@@ -72,6 +74,25 @@ public class CartDao {
         }
         em.close();
         return true;
+    }
 
+    public static Cart selectCartByEmailAndStatus(String email,boolean status) {
+        EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
+        String qString = "select u from Cart u where u.customer.customerEmail=:email and u.status=:status";
+        TypedQuery<Cart> q = em.createQuery(qString, Cart.class);
+        q.setParameter("email", email);
+        q.setParameter("status", status);
+        Cart cart = null;
+        try {
+            cart = q.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        return cart;
+    }
+    public static List<CartItems> retrieveAllItemInCart(String email,boolean status) { 
+        return selectCartByEmailAndStatus(email, status).getCartItems();
     }
 }

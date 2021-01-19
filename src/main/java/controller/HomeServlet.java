@@ -33,14 +33,14 @@ public class HomeServlet extends HttpServlet {
         ServletContext context = req.getSession().getServletContext();
 
         if (context.getAttribute("allShoes") == null) {
-            context.setAttribute("allShoes", ShoesDAO.retrieveNShoes(12));
+            context.setAttribute("allShoes", ShoesDAO.retrieveNShoes(24));
         }
-        String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
-        if (cookieEmail != "") {
-            session.setAttribute("email", cookieEmail);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-            return;
-        }
+        // String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
+        // if (cookieEmail != "") {
+        //     session.setAttribute("email", cookieEmail);
+        //     getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        //     return;
+        // }
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 
     }

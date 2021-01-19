@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shopping Cart</title>
-    <link rel="stylesheet" href="assets/css/shopping-cart.css">
+    <title>Wish List</title>
+    <link rel="stylesheet" href="./assets/css/wishlist.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
@@ -23,10 +23,27 @@
         <div class="nav-bar-right">
             <ul>
                 <li id="log-in">
-                    <a href="#">
+                    <a href="#" class="show-dropdown">
                         <i class="fas fa-user"></i>
                     Log in
-                    </a> 
+                    </a>
+                    <div class="dropdown-list">
+                        <div class="drop-box">
+                            <a href="#" >
+                                <i class="far fa-heart"></i> Wish list
+                            </a>
+                        </div>
+                        <div class="drop-box">
+                            <a href="/Web-nhom1/shopping-cart.html">
+                                <i class="fas fa-shopping-cart"></i> Shop Cart
+                            </a>
+                        </div>
+                        <div class="drop-box" >
+                            <a href="#">
+                                <i class="fas fa-sign-out-alt"></i> Log out
+                            </a>
+                        </div> 
+                    </div>
                 </li>
                 <li><a href="#">Sign up</a></li>
             </ul>
@@ -42,48 +59,22 @@
                     <th class="t-product">PRODUCTS</th>
                     <th class="t-name">NAME</th>
                     <th class="t-unitprice">UNIT PRICE</th>
-                    <th class="t-quantity">QUANTITY</th>
-                    <th class="t-total">TOTAL</th>
-                </tr>
-                <tr>
-                    <td><img src="../webapp/assets/img/giay1.jpg" alt="Hinh Mau"></td>
-                    <td>Product 1</td>
-                    <td>$100</td>
-                    <td>2</td>
-                    <td>$200</td>
-                    <td><i class="fas fa-trash"></i></td>
+                    <th class="t-addtocart"> ADD TO CART</th>
                 </tr>
                 <tr>
                     <td><img src="src/img/giay1.jpg" alt="Hinh Mau"></td>
                     <td>Product 1</td>
                     <td>$100</td>
-                    <td>2</td>
-                    <td>$200</td>
-                    <td><i class="fas fa-trash"></i></td>
+                    <td><div class="btn-add"><i class="fas fa-shopping-cart"></i>Add to cart</div></td>
+                </tr>
+                <tr>
+                    <td><img src="src/img/giay1.jpg" alt="Hinh Mau"></td>
+                    <td>Product 1</td>
+                    <td>$100</td>
+                    <td><div class="btn-add"><i class="fas fa-shopping-cart"></i>Add to cart</div></td>
                 </tr>
             </table>
         </div>
     </section>
-    <div class="cart-footer">
-        <div class="note">
-            <textarea name="note" class="note-input" id="" cols="30" rows="10" placeholder="Add a note to your order"></textarea>
-        </div>
-        <div class="total">
-            <div class="total-content">
-                <div class="sum-price">
-                    <div class="label">Total</div>
-                    <div class="price"> $400</div>
-                </div>
-                <div class="shipping">
-                    Shipping and taxes calculated at checkout
-                </div>
-                <div class="btn-option">
-                    <input type="button" value="Continue Shopping" class="btn">
-                    <input type="button" value="Update" class="btn" >
-                    <input type="button" value="Check out" class="btn" >
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
-</html>
+</html>    

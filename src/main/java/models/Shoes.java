@@ -33,7 +33,7 @@ public class Shoes implements Serializable {
     @OneToOne(mappedBy = "shoes",fetch = FetchType.LAZY)
     private CartItems cartItems;
 
-    @OneToOne(mappedBy = "shoes",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "shoes",fetch = FetchType.EAGER)
     private Color color;
 
     @ManyToOne(fetch = FetchType.LAZY)
