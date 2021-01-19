@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD Products Page</title>
+    <link rel="stylesheet" type="text/css" href="./src/css/add-product.css">
+</head>
+<body>
+    <div class="Container">
+        <div class="Header">
+            <h3>ADDING PRODUCTS</h3>
+        </div>
+        <div class="Menu">
+            <ul>
+                <li><a>Website</a></li>
+                <li><a>Product Management</a></li>
+                <li><a>Customer Management</a></li>
+                <li><a>Order Management</a></li>
+                <li><a>Employee Management</a></li>
+            </ul>
+        </div>
+        <div class="Content">
+                <form>
+                    <div id="MainInfo">
+                    <label>Product code: </label><br/>
+                    <input type="text" name="ProductCode" id="TextBox1"><br/><br/>
+                    <label>Product name: </label><br/>
+                    <input type="text" name="ProductName" id="TextBox2"><br/><br/>
+                    <label>Brand: </label><br/><br/>
+                    <select name="Brand" id="ComboBox1">
+                        <option value="1">Nike</option>
+                        <option value="2">Biti's</option>
+                        <option value="3">Adidas</option>
+                        <option value="4">New Balance</option>
+                    </select><br/><br/>
+                    <label>Weight: </label><br/>
+                    <input type="text" name="ProductWeight" id="TextBox3"><br/><br/>
+                    <label>Price: </label><br/>
+                    <input type="text" name="ProductPrice" id="TextBox4"><br/><br/>
+                    <label>Available: </label><br/>
+                    <input type="text" name="ProductAvailable" id="TextBox5"><br/><br/>
+                    </div>
+                    <div id="ImageArea">
+                        <img src="">
+                        <button style="width:100%;">Upload Photos</button>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <label>Color: </label><br/><br/>
+                    <select name="Color" id="ComboBox2">
+                        <option value="1">Red</option>
+                        <option value="2">Black</option>
+                        <option value="3">White</option>
+                        <option value="4">Grey</option>
+                    </select><br/><br/>
+                    <label>Size: </label><br/><br/>
+                    <select name="Color" id="ComboBox2">
+                        <option value="1">36</option>
+                        <option value="2">37</option>
+                        <option value="3">38</option>
+                        <option value="4">39</option>
+                    </select><br/><br/>
+                    <input type="submit" name="Submit" value="Upload Product">
+                </form>
+        </div>
+        <div class="Footer"></div>
+    </div>
+</body>
+</html>

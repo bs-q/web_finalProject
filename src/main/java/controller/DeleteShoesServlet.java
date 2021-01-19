@@ -66,6 +66,7 @@ public class DeleteShoesServlet extends HttpServlet {
             System.out.println("delete servlet : line 66: transaction failed");
             return;
         }
-
+        System.out.println("delete servlet : line 69 - transaction complete");
+        resp.sendRedirect("/cart");
     }
 }

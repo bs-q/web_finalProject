@@ -68,7 +68,6 @@ public class CartDao {
     public static boolean updateCart(Cart cart) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.merge(cart);

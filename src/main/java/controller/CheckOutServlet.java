@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import data.cartDao.CartDao;
 import data.util.CookieUtil;
+import models.Cart;
 import models.CartItems;
 
 @WebServlet(urlPatterns = {"/checkout"})
@@ -50,11 +51,16 @@ public class CheckOutServlet extends HttpServlet{
             }
         }
         // begin checkout
-        List<CartItems> items = CartDao.retrieveAllItemInCart((String) session.getAttribute("email"), false);  
-        if(items ==null){
+        Cart cart =CartDao.selectCartByEmailAndStatus((String) session.getAttribute("email"), false);
+        if(cart ==null){
             getServletContext().getRequestDispatcher("/product").forward(req, resp);
             System.out.println("check out servlet : line 56 - no items in cart, forward to product page");
             return; 
         }
+        req.setAttribute("cartid", cart.getCartId());
+        System.out.println("check out servlet: line 61 - cart id :"+cart.getCartId());
+        req.setAttribute("items", cart.getCartItems());
+        getServletContext().getRequestDispatcher("/checkOut.jsp").forward(req, resp);
+        System.out.println("check out servlet : line 63 - forward to checkout page");
     }
 }
