@@ -32,6 +32,11 @@ public class ShoesDAO {
     
     public static Shoes selectShoesById(Integer  id) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
-        return em.find(Shoes.class, id);
+        try {
+            return em.find(Shoes.class, id);
+        }finally{
+            em.close();
+        }
+        
     }
 }

@@ -21,16 +21,16 @@ import models.Cart;
 import models.CartItems;
 
 public class CartItemsDAO {
-    
+
     /**
      * insert cart item
+     * 
      * @param item
      * @return return true if transaction if complete, else false
      */
     public static boolean insertCartItem(CartItems item) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.persist(item);
@@ -44,11 +44,10 @@ public class CartItemsDAO {
         }
         return true;
     }
-    
+
     public static boolean updateCartItem(CartItems item) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.merge(item);
@@ -62,10 +61,10 @@ public class CartItemsDAO {
         }
         return true;
     }
+
     public static boolean deleteCartItem(CartItems item) {
         EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
-        trans.begin();
         try {
             trans.begin();
             em.remove(item);

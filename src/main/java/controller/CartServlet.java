@@ -76,7 +76,7 @@ public class CartServlet extends HttpServlet {
             return;
         } catch (Exception e) {
             getServletContext().getRequestDispatcher("/login").forward(req, resp);
-            System.out.println("cart servlet : line 79 - failed to get items, login first");
+            System.out.println("cart servlet : line 79 - failed to get items, login first or database close connection");
             return;
         }
     }

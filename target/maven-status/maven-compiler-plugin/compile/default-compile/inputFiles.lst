@@ -20,6 +20,7 @@ G:\school\web_programming\web_finalProject\src\main\java\controller\RegisterServ
 G:\school\web_programming\web_finalProject\src\main\java\data\util\CookieUtil.java
 G:\school\web_programming\web_finalProject\src\main\java\controller\CartServlet.java
 G:\school\web_programming\web_finalProject\src\main\java\data\util\MailServlet.java
+G:\school\web_programming\web_finalProject\src\main\java\data\util\BookMailServlet.java
 G:\school\web_programming\web_finalProject\src\main\java\controller\CheckOutServlet.java
 G:\school\web_programming\web_finalProject\src\main\java\controller\DeleteShoesServlet.java
 G:\school\web_programming\web_finalProject\src\main\java\models\Size.java

@@ -18,9 +18,9 @@
         <div class="logo">Group 1</div>
         <div class="nav-bar-option">
           <ul>
-            <li><a href="./home"> Home </a></li>
-            <li><a href="./product"> Product </a></li>
-            <li><a href="#"> About Us </a></li>
+            <li><a href="./home" onclick="loading()"> Home </a></li>
+            <li><a href="./product" onclick="loading()"> Product </a></li>
+            <li><a href="#" onclick="loading()"> About Us </a></li>
           </ul>
         </div>
       </div>
@@ -29,14 +29,14 @@
           <li id="log-in">
             <c:choose>
               <c:when test="${email==null}">
-                <a href="./login" class="show-dropdown">
+                <a href="./login" onclick="loading()" class="show-dropdown">
                   <i class="fas fa-user"></i>
 
                   Log in
                 </a></c:when
               >
               <c:when test="${email!=null}">
-                <a href="#" class="show-dropdown">
+                <a href="#" onclick="loading()" class="show-dropdown">
                   <i class="fas fa-user"></i>
                   <c:set var="name" value="${fn:split(email, '@')}" />
                   Hello, ${name[0]}
@@ -45,18 +45,18 @@
             </c:choose>
             <c:if test="${email!=null}"
               ><div class="dropdown-list">
-                <div class="drop-box" onclick="on()">
-                  <a href="./wishlist">
+                <div class="drop-box">
+                  <a href="./wishlist" onclick="loading()">
                     <i class="far fa-heart"></i> Wish list
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="#">
+                  <a href="./cart" onclick="loading()">
                     <i class="fas fa-shopping-cart"></i> Shop Cart
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="./logout">
+                  <a href="./logout" onclick="loading()">
                     <i class="fas fa-sign-out-alt"></i> Log out
                   </a>
                 </div>
@@ -64,7 +64,7 @@
             </c:if>
           </li>
           <c:if test="${email==null}"
-            ><li><a href="#">Sign up</a></li></c:if
+            ><li><a href="./register">Sign up</a></li></c:if
           >
         </ul>
       </div>
@@ -128,10 +128,16 @@
           name="city"
         />
         <div class="btn-option">
-          <input type="submit" value="Confirm order" class="btn" />
+          <input
+            type="submit"
+            value="Confirm order"
+            onclick="loading()"
+            class="btn"
+          />
           <input
             type="button"
             onclick="location.href='./product'"
+            onclick="loading()"
             value="Continue Shopping"
             class="btn"
           />
@@ -183,7 +189,7 @@
         <div class="footer-column">
           <div class="footer-head"><i class="fab fa-drupal"></i></div>
           <div class="footer-sub">
-            "Live as if you were die tomorrow. Learn as ifyou were to live
+            "Live as if you were die tomorrow. Learn as if you were to live
             forever"
           </div>
           <div class="footer-sub" style="text-align: right">
@@ -216,5 +222,10 @@
         </div>
       </div>
     </div>
+    <div id="loading" class="loading" style="opacity: 0; visibility: hidden">
+      <img src="./assets/img/load.gif" />
+    </div>
+    <script src="./assets/js/loading.js"></script>
+    <script src="./assets/js/send.js"></script>
   </body>
 </html>

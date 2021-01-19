@@ -24,7 +24,7 @@
           <ul>
             <li><a href="./home" onclick="loading()"> Home </a></li>
             <li><a href="./product" onclick="loading()"> Product </a></li>
-            <li><a href="#"> About Us </a></li>
+            <li><a href="#" onclick="loading()"> About Us </a></li>
           </ul>
         </div>
       </div>
@@ -33,14 +33,14 @@
           <li id="log-in">
             <c:choose>
               <c:when test="${email==null}">
-                <a href="./login" class="show-dropdown">
+                <a href="./login" onclick="loading()" class="show-dropdown">
                   <i class="fas fa-user"></i>
 
                   Log in
                 </a></c:when
               >
               <c:when test="${email!=null}">
-                <a href="#" class="show-dropdown">
+                <a href="#" onclick="loading()" class="show-dropdown">
                   <i class="fas fa-user"></i>
                   <c:set var="name" value="${fn:split(email, '@')}" />
                   Hello, ${name[0]}
@@ -50,17 +50,17 @@
             <c:if test="${email!=null}"
               ><div class="dropdown-list">
                 <div class="drop-box">
-                  <a href="./wishlist">
+                  <a href="./wishlist" onclick="loading()">
                     <i class="far fa-heart"></i> Wish list
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="./cart">
+                  <a href="./cart" onclick="loading()">
                     <i class="fas fa-shopping-cart"></i> Shop Cart
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="./logout">
+                  <a href="./logout" onclick="loading()">
                     <i class="fas fa-sign-out-alt"></i> Log out
                   </a>
                 </div>

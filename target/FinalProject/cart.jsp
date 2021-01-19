@@ -112,11 +112,15 @@
                     Shipping and taxes calculated at checkout
                 </div>
                 <div class="btn-option">
-                    <input type="button" value="Continue Shopping" onclick="location.href='./product'" class="btn">
-                    <input type="button" value="Check out" class="btn" onclick="location.href='./checkout'" >
+                    <input type="button" value="Continue Shopping" onclick="location.href='./product';loading()" class="btn">
+                    <input type="button" value="Check out" class="btn" onclick="location.href='./checkout';loading()" >
                 </div>
             </div>
         </div>
     </div>
+        <div id="loading" class="loading" style="opacity: 0; visibility: hidden">
+      <img src="./assets/img/load.gif" />
+    </div>
+    <script src="./assets/js/loading.js"></script>
 </body>
 </html>
