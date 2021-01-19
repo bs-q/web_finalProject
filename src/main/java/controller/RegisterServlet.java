@@ -43,6 +43,7 @@ public class RegisterServlet extends HttpServlet {
             req.setAttribute("password", password);
             req.setAttribute("conPassword", conPassword);
             getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
+            System.out.println("register servlet : line 46 - invalid input");
         }
         else if (CustomerDAO.emailExist(email)){
             req.setAttribute("firstname", firstName);
@@ -52,17 +53,20 @@ public class RegisterServlet extends HttpServlet {
             req.setAttribute("conPassword", conPassword);
             req.setAttribute("registered", true);
             getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
+            System.out.println("register servlet : line 56 - email has been registered");
         }
         else {
             Customer customer = new Customer(firstName, lastName, email, Encrypt.sha1(password), "", "customer", "");
             CustomerDAO.insertCustomer(customer);
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+            System.out.println("register servlet : line 62 - successfully create new account");
         }
 
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/signup.jsp").forward(req, resp);
+        System.out.println("regiser servlet : line 69 - get register");
     }
 
     /**

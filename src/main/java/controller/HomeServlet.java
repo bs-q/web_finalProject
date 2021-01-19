@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet {
         ServletContext context = req.getSession().getServletContext();
 
         if (context.getAttribute("allShoes") == null) {
-            context.setAttribute("allShoes", ShoesDAO.retrieveNShoes(24));
+            context.setAttribute("allShoes", ShoesDAO.retrieveNShoes(29));
         }
         // String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
         // if (cookieEmail != "") {
@@ -41,7 +41,7 @@ public class HomeServlet extends HttpServlet {
         //     getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         //     return;
         // }
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
 
     }
 

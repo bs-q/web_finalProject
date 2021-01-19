@@ -25,6 +25,7 @@ public class CustomerDAO {
         EntityTransaction trans = em.getTransaction();
         trans.begin();
         try {
+            trans.begin();
             em.persist(customer);
             trans.commit();
         } catch (Exception e) {
@@ -44,6 +45,7 @@ public class CustomerDAO {
         EntityTransaction trans = em.getTransaction();
         trans.begin();
         try {
+            trans.begin();
             em.merge(customer);
             trans.commit();
         } catch (Exception e) {

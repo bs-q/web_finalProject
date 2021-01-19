@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import data.cartDao.CartDao;
@@ -24,10 +25,15 @@ public class DBconnection {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // System.out.println(CartDao.retrieveAllItemInCart("q@gmail.com", false).get(0).getCartItemsQuantity());
-        MailServlet.send("18110041@student.hcmute.edu.vn", "accounts.google.com",
-        "18110055@student.hcmute.edu.vn", "hello", "How r u?");
-        // DButil.shutdown();
+        List<String>a=null;
+        for(String c:a){
+
+        }
+        // System.out.println(CartDao.retrieveAllItemInCart("q@gmail.com",
+        // false).get(0).getCartItemsQuantity());
+        // MailServlet.send("18110041@student.hcmute.edu.vn", "accounts.google.com",
+        // "18110055@student.hcmute.edu.vn", "hello", "How r u?");
+        // // DButil.shutdown();
 
     }
 

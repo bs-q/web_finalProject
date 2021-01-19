@@ -1,11 +1,12 @@
 /*
- * File Created: Tuesday, 19th January 2021 12:32:28 pm
+ * File Created: Tuesday, 19th January 2021 9:41:22 pm
  * Author: Bui Si Quan (18110041@student.hcmute.edu.vn)
  * -----
  */
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,23 +17,24 @@ import javax.servlet.http.HttpSession;
 
 import data.cartDao.CartDao;
 import data.util.CookieUtil;
+import models.CartItems;
 
-@WebServlet(urlPatterns = { "/delete" })
-public class DeleteShoesServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/checkout"})
+public class CheckOutServlet extends HttpServlet{
     /**
      *
      */
-    private static final long serialVersionUID = -6614764719905605390L;
+    private static final long serialVersionUID = 9190395150103646533L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
         // check session
         if (session.getAttribute("email") == null) {
             // check cookie, then assign it to session
             if (req.getCookies() == null) {
                 getServletContext().getRequestDispatcher("/login").forward(req, resp);
+                System.out.println("checkout servlet : line 34 - null cookie");
                 return;
             }
             // get cookie value
@@ -43,29 +45,16 @@ public class DeleteShoesServlet extends HttpServlet {
             } else {
                 // this is the case when customer just logout or cookie has expired
                 getServletContext().getRequestDispatcher("/login").forward(req, resp);
-                System.out.println("delete servlet: line 46 - invalid customer");
+                System.out.println("checkout servlet : line - 46 failed to get cookie");
                 return;
             }
         }
-        // debug mod
-        int cid = 0;
-        int id = 0;
-        try {
-            cid = Integer.parseInt(req.getParameter("cid"));
-            id = Integer.parseInt(req.getParameter("id"));
-        } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "wrong id");
-            System.out.println("delete servlet : line 58-wrong id");
-            return;
+        // begin checkout
+        List<CartItems> items = CartDao.retrieveAllItemInCart((String) session.getAttribute("email"), false);  
+        if(items ==null){
+            getServletContext().getRequestDispatcher("/product").forward(req, resp);
+            System.out.println("check out servlet : line 56 - no items in cart, forward to product page");
+            return; 
         }
-        boolean ok;
-        try {
-            ok =CartDao.deleteItemInCart((String)session.getAttribute("email"), false, id, cid);
-        } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_NO_CONTENT, "transaction failed");
-            System.out.println("delete servlet : line 66: transaction failed");
-            return;
-        }
-
     }
 }

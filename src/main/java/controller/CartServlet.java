@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import data.cartDao.CartDao;
 import data.util.CookieUtil;
+import models.Cart;
 import models.CartItems;
 
 /**
@@ -33,21 +34,50 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+        //check session
         if (session.getAttribute("email") == null) {
+            //check cookie, then assign it to session
+            if(req.getCookies()==null){
+                getServletContext().getRequestDispatcher("/login").forward(req, resp);
+                System.out.println("cart servlet : line 42 - null cookie");
+                return;
+            }
+            //get cookie value
             String cookieEmail = CookieUtil.getCookieValue(req.getCookies(), "email");
             if (cookieEmail != "") {
-                session.setAttribute("email", "");
+                //assign to session
+                session.setAttribute("email", cookieEmail);
             } else {
+                //  this is the case when customer just logout or cookie has expired
                 getServletContext().getRequestDispatcher("/login").forward(req, resp);
+                System.out.println("cart servlet : line -53 failed to get cookie");
+                return;
             }
         }
         try {
-
-            List<CartItems> items = CartDao.retrieveAllItemInCart("q@gmail.com", false);
+            // get cart which is not checked out
+            
+            Cart c =CartDao.selectCartByEmailAndStatus((String)session.getAttribute("email"), false);
+            if(c==null){
+                getServletContext().getRequestDispatcher("/cart.jsp").forward(req, resp);
+                System.out.println("cart servlet : line 63 - no cart found, is it ok to forward to cart?");
+                return;
+            }
+            // get items in cart
+            List<CartItems> items = c.getCartItems();
+            // assign it to request
             req.setAttribute("items", items);
-            getServletContext().getRequestDispatcher("/shopping-cart.jsp").forward(req, resp);
+            // get cart id, this is a signal to remove item
+            req.setAttribute("cartId", c.getCartId());
+            System.out.println("request cart id:");
+            System.out.println(c.getCartId());
+            getServletContext().getRequestDispatcher("/cart.jsp").forward(req, resp);
+            System.out.println("cart servlet : line 75 - ok, cart servlet working normally");
+            return;
         } catch (Exception e) {
-            getServletContext().getRequestDispatcher("/testlogin.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/login").forward(req, resp);
+            System.out.println("cart servlet : line 79 - failed to get items, login first");
+            return;
         }
     }
 }

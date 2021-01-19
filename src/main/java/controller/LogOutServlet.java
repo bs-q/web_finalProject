@@ -31,5 +31,6 @@ public class LogOutServlet extends HttpServlet {
         CookieUtil.removeAllCookie(req.getCookies(), resp);
         session.removeAttribute("email");
         resp.sendRedirect("home");
+        System.out.println("logout servlet : line 34 - remove all cookie and session");
     }
 }

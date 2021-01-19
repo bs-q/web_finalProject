@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -21,9 +22,8 @@
         <div class="logo">Group 1</div>
         <div class="nav-bar-option">
           <ul>
-            <li><a href="#"> Home </a></li>
-            <li><a href="#"> Product </a></li>
-            <li><a href="#"> Home </a></li>
+            <li><a href="./home"> Home </a></li>
+            <li><a href="./product"> Product </a></li>
             <li><a href="#"> About Us </a></li>
           </ul>
         </div>
@@ -43,16 +43,16 @@
             </a>
             <c:if test="${email!=null}"
               ><div class="dropdown-list">
-                <div class="drop-box" onclick="on()">
-                  <a href="#"> <i class="far fa-heart"></i> Wish list </a>
+                <div class="drop-box">
+                  <a href="./wishlist"> <i class="far fa-heart"></i> Wish list </a>
                 </div>
                 <div class="drop-box">
-                  <a href="/Web-nhom1/shopping-cart.html">
+                  <a href="./cart">
                     <i class="fas fa-shopping-cart"></i> Shop Cart
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="#"> <i class="fas fa-sign-out-alt"></i> Log out </a>
+                  <a href="./logout"> <i class="fas fa-sign-out-alt"></i> Log out </a>
                 </div>
               </div>
             </c:if>
@@ -139,10 +139,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -165,10 +168,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -190,10 +196,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -251,10 +260,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -275,10 +287,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -299,10 +314,13 @@
                     <div class="product-name">${allShoes[i].shoesName}</div>
                     <div class="product-price">${allShoes[i].shoesPrice} $</div>
                     <div class="btn-option">
-                      <button class="btn">
+                      <button
+                        class="btn"
+                        id="${allShoes[i].shoesId}"
+                        onclick="addSuccess(this.id)"
+                      >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
-                      <button class="btn"><i class="far fa-heart"></i></button>
                       <button class="btn"><i class="far fa-heart"></i></button>
                     </div>
                   </div>
@@ -335,33 +353,41 @@
     <div class="footer">
       <div class="footer-content">
         <div class="footer-column">
-          <div class="footer-head">Product</div>
-          <div class="footer-sub">Men</div>
-          <div class="footer-sub">Women</div>
-          <div class="footer-sub">Children</div>
+          <div class="footer-head"><i class="fab fa-drupal"></i></div>
+          <div class="footer-sub">
+            "Live as if you were die tomorrow. Learn as ifyou were to live
+            forever"
+          </div>
+          <div class="footer-sub" style="text-align: right">
+            --Mabathma Gandhi--
+          </div>
         </div>
         <div class="footer-column">
-          <div class="footer-head">About us</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
+          <div class="footer-head">Contact</div>
+          <div class="footer-sub">
+            <i class="fas fa-map-marker-alt"></i>
+            1 Vo Van Ngan St, Thu Duc City, HCM City
+          </div>
+          <div class="footer-sub">
+            <i class="fas fa-phone"></i>
+            Phone: 0918372548
+          </div>
+          <div class="footer-sub">
+            <i class="fas fa-envelope"></i>
+            Email: group1@student.hcmute.edu.vn
+          </div>
         </div>
         <div class="footer-column">
-          <div class="footer-head">About us</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-head">About us</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
-          <div class="footer-sub">Member</div>
+          <div class="footer-head">Follow us</div>
+          <div class="follow">
+            <div class="footer-sub"><i class="fab fa-facebook"></i></div>
+            <div class="footer-sub"><i class="fab fa-twitter"></i></div>
+            <div class="footer-sub"><i class="fab fa-instagram"></i></div>
+            <div class="footer-sub"><i class="fab fa-google-plus-g"></i></div>
+          </div>
         </div>
       </div>
     </div>
+    <script src="./assets/js/send.js"></script>
   </body>
 </html>

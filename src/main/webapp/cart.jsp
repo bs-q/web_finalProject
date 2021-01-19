@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="assets/css/shopping-cart.css">
+    <link rel="stylesheet" href="./assets/css/shopping-cart.css">
+        <!-- <link rel="stylesheet" href="./assets/css/footer.css" /> -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
@@ -16,9 +18,8 @@
         <div class="logo">Group 1</div>
         <div class="nav-bar-option">
           <ul>
-            <li><a href="#"> Home </a></li>
-            <li><a href="#"> Product </a></li>
-            <li><a href="#"> Home </a></li>
+            <li><a href="./home"> Home </a></li>
+            <li><a href="./product"> Product </a></li>
             <li><a href="#"> About Us </a></li>
           </ul>
         </div>
@@ -39,15 +40,15 @@
             <c:if test="${email!=null}"
               ><div class="dropdown-list">
                 <div class="drop-box" onclick="on()">
-                  <a href="#"> <i class="far fa-heart"></i> Wish list </a>
+                  <a href="./wishlist"> <i class="far fa-heart"></i> Wish list </a>
                 </div>
                 <div class="drop-box">
-                  <a href="/Web-nhom1/shopping-cart.html">
+                  <a href="#">
                     <i class="fas fa-shopping-cart"></i> Shop Cart
                   </a>
                 </div>
                 <div class="drop-box">
-                  <a href="#"> <i class="fas fa-sign-out-alt"></i> Log out </a>
+                  <a href="./logout"> <i class="fas fa-sign-out-alt"></i> Log out </a>
                 </div>
               </div>
             </c:if>
@@ -84,7 +85,7 @@
                     <c:set var="sum" scope="request"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${total+i.shoes.shoesPrice*i.cartItemsQuantity}" /></c:set>
                     <c:set var="total" value="${sum}"/>
 
-                    <a href="./home.jsp"><i class="fas fa-trash"></i></a></td>
+                    <a href="./delete?cid=${requestScope.cartId}&id=${i.cartItemsId}"><i class="fas fa-trash"></i></a></td>
                 </tr>
                 </c:forEach>
                 
@@ -105,9 +106,8 @@
                     Shipping and taxes calculated at checkout
                 </div>
                 <div class="btn-option">
-                    <input type="button" value="Continue Shopping" class="btn">
-                    <input type="button" value="Update" class="btn" >
-                    <input type="button" value="Check out" class="btn" >
+                    <input type="button" value="Continue Shopping" onclick="location.href='./product'" class="btn">
+                    <input type="button" value="Check out" class="btn" onclick="location.href='./checkout'" >
                 </div>
             </div>
         </div>

@@ -13,14 +13,11 @@ Author: Bui Si Quan (18110041@student.hcmute.edu.vn)
   <body>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <c:out value="${email}" />
+    <p>session</p>
+    <c:out value="${sessionScope.email}" />
     <p>------</p>
-    <c:forEach var="c" items="${applicationScope.allShoes}">
-      <p>${c.shoesName}</p>
-      <p>${c.shoesPrice}</p>
-      <img src="${shoes.color.image}" alt="">
-    </c:forEach>
-
+    <p>check cart signal</p>
+    <p>cardId:${cardId}</p>
     <c:forEach var="c" items="${cookie}">
       <p>${c.value.name}</p>
       <p>${c.value.value}</p>

@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("password", password);
             req.setAttribute("valid", false);
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+            System.out.println("login servlet: line 41- cannot create new customer");
         } else {
             HttpSession session = req.getSession();
             session.setAttribute("email", email);
@@ -59,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 
             resp.sendRedirect("home");
             // getServletContext().getRequestDispatcher("/home").forward(req, resp);
-
+            System.out.println("login servlet: line 63 - ok ");
         }
 
     }
@@ -72,8 +73,10 @@ public class LoginServlet extends HttpServlet {
         // or haven't login, forward to login.jsp else forward to home, maybe use cookie to do this job
         if (session.getAttribute("email")==null) {
             getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+            System.out.println("login servlet: line 76 - no session ! might cause bug here");
         } else {
             getServletContext().getRequestDispatcher("/home").forward(req, resp);
+            System.out.println("login servlet: line 79 - session valid");
         }
 
     }
