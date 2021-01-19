@@ -25,10 +25,6 @@ public class DBconnection {
 
     public static void main(String[] args) throws InterruptedException {
 
-        List<String>a=null;
-        for(String c:a){
-
-        }
         // System.out.println(CartDao.retrieveAllItemInCart("q@gmail.com",
         // false).get(0).getCartItemsQuantity());
         // MailServlet.send("18110041@student.hcmute.edu.vn", "accounts.google.com",

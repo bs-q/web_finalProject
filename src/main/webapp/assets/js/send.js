@@ -16,7 +16,7 @@
 //     window.alert("fuck you");
 //   }
 // };
-function addSuccess(shoesId) {
+function add(shoesId) {
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "./add?shoesId=" + shoesId, true);
   xhttp.send();

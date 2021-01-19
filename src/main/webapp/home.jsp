@@ -22,8 +22,8 @@
         <div class="logo">Group 1</div>
         <div class="nav-bar-option">
           <ul>
-            <li><a href="./home"> Home </a></li>
-            <li><a href="./product"> Product </a></li>
+            <li><a href="./home" onclick="loading()"> Home </a></li>
+            <li><a href="./product" onclick="loading()"> Product </a></li>
             <li><a href="#"> About Us </a></li>
           </ul>
         </div>
@@ -152,7 +152,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -181,7 +181,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -209,7 +209,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -273,7 +273,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -300,7 +300,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -327,7 +327,7 @@
                       <button
                         class="btn"
                         id="${allShoes[i].shoesId}"
-                        onclick="addSuccess(this.id)"
+                        onclick="add(this.id)"
                       >
                         <i class="fas fa-shopping-cart"></i>
                       </button>
@@ -398,6 +398,10 @@
         </div>
       </div>
     </div>
+    <div id="loading" class="loading" style="opacity: 0; visibility: hidden">
+      <img src="./assets/img/load.gif" />
+    </div>
+    <script src="./assets/js/loading.js"></script>
     <script src="./assets/js/send.js"></script>
   </body>
 </html>

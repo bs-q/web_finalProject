@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Thank you</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/thanks.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="nav-bar-left">
+        <div class="logo">Group 1</div>
+        <div class="nav-bar-option">
+          <ul>
+            <li><a href="./home" onclick="loading()"> Home </a></li>
+            <li><a href="./product" onclick="loading()"> Product </a></li>
+            <li><a href="#"> About Us </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-bar-right">
+        <ul>
+          <li id="log-in">
+            <c:choose>
+              <c:when test="${email==null}">
+                <a href="./login" class="show-dropdown">
+                  <i class="fas fa-user"></i>
+
+                  Log in
+                </a></c:when
+              >
+              <c:when test="${email!=null}">
+                <a href="#" class="show-dropdown">
+                  <i class="fas fa-user"></i>
+                  <c:set var="name" value="${fn:split(email, '@')}" />
+                  Hello, ${name[0]}
+                </a>
+              </c:when>
+            </c:choose>
+            <c:if test="${email!=null}"
+              ><div class="dropdown-list">
+                <div class="drop-box">
+                  <a href="./wishlist">
+                    <i class="far fa-heart"></i> Wish list
+                  </a>
+                </div>
+                <div class="drop-box">
+                  <a href="./cart">
+                    <i class="fas fa-shopping-cart"></i> Shop Cart
+                  </a>
+                </div>
+                <div class="drop-box">
+                  <a href="./logout">
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                  </a>
+                </div>
+              </div>
+            </c:if>
+          </li>
+          <c:if test="${email==null}"
+            ><li><a href="./register">Sign up</a></li></c:if
+          >
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="title">
+          <div class="head-title">Thank you!</div>
+          <div class="small-title">
+            Your order will be confirm and ship to your address
+          </div>
+        </div>
+        <div class="btn-option">
+          <div class="btn">
+            <a href="home.html">Continue shopping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-head"><i class="fab fa-drupal"></i></div>
+          <div class="footer-sub">
+            "Live as if you were die tomorrow. Learn as ifyou were to live
+            forever"
+          </div>
+          <div class="footer-sub" style="text-align: right">
+            --Mabathma Gandhi--
+          </div>
+        </div>
+        <div class="footer-column">
+          <div class="footer-head">Contact</div>
+          <div class="footer-sub">
+            <i class="fas fa-map-marker-alt"></i>
+            1 Vo Van Ngan St, Thu Duc City, HCM City
+          </div>
+          <div class="footer-sub">
+            <i class="fas fa-phone"></i>
+            Phone: 0918372548
+          </div>
+          <div class="footer-sub">
+            <i class="fas fa-envelope"></i>
+            Email: group1@student.hcmute.edu.vn
+          </div>
+        </div>
+        <div class="footer-column">
+          <div class="footer-head">Follow us</div>
+          <div class="follow">
+            <div class="footer-sub"><i class="fab fa-facebook"></i></div>
+            <div class="footer-sub"><i class="fab fa-twitter"></i></div>
+            <div class="footer-sub"><i class="fab fa-instagram"></i></div>
+            <div class="footer-sub"><i class="fab fa-google-plus-g"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Loadding page -->
+
+    <div id="loading" class="loading" style="opacity: 0; visibility: hidden">
+      <img src="./assets/img/load.gif" />
+    </div>
+    <script src="./assets/js/loading.js"></script>
+    <script src="./assets/js/send.js"></script>
+  </body>
+</html>
