@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -111,9 +110,10 @@ public class AddShoesServlet extends HttpServlet {
                 EntityManager em = DButil.getEntityManagerFactory().createEntityManager();
                 EntityTransaction trans = em.getTransaction();
 
-                String qString = "select u from CartItems u where u.shoes.shoesId=:id";
+                String qString = "select u from CartItems u where u.shoes.shoesId=:id and u.cart.cartId=:cid";
                 TypedQuery<CartItems> q = em.createQuery(qString, CartItems.class);
                 q.setParameter("id", Integer.parseInt(req.getParameter("shoesId")));
+                q.setParameter("cid", c.getCartId());
                 CartItems cartItems = null;
                 try {
                     trans.begin();
